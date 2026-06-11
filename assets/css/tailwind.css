@@ -1,0 +1,397 @@
+/* =========================
+   FONT FACE
+========================= */
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* =========================
+   TAILWIND v4 IMPORT
+========================= */
+
+@import "tailwindcss";
+
+
+/* =========================
+   DESIGN TOKENS (TAILWIND v4)
+========================= */
+
+@theme {
+  --color-violet: #6B53FF;
+  --color-midnight-blue: #2C2652;
+  --color-yellow: #F5D74F;
+  --color-tomato: #E3544C;
+  --color-soft-tomato: #FCEEED;
+  --color-black: #28384F;
+  --color-white: #ffffff;
+
+  --font-thunder: "Thunder", sans-serif;
+  --font-clash: "Clash Grotesk", sans-serif;
+}
+
+.container {
+    max-width: 1535px;
+    width: 100%;
+    margin: auto;
+    padding-inline: 20px;
+}
+
+@media (max-width:640px) {
+    .container {
+        padding-inline: 16px;
+    }
+}
+
+body {
+    font-family: "Farro", sans-serif !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Farro", sans-serif !important;
+}
+
+p {
+    font-weight: 300 !important;
+}
+
+@layer base {
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.section-padding {
+    padding-block: 96px;
+}
+
+@media (max-width:1024px) {
+    .section-padding {
+        padding-block: 60px;
+    }
+}
+
+@media (max-width:640px) {
+    .section-padding {
+        padding-block: 48px;
+    }
+}
+/* =========================
+   CSS RESET / BASE
+========================= */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin & padding */
+
+/* HTML & body */
+body {
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+
+}
+
+
+
+/* Remove link underline */
+a {
+  text-decoration: none;
+}
+
+/* Images responsive */
+img,
+picture,
+video,
+canvas {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form elements inherit font */
+
+
+/* Button cursor */
+button {
+  cursor: pointer;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* smooth scrooll */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Lenis end */
+
+.header-section{
+
+  background: #37325B;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 80px;
+}
+
+
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.nav a {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  /* 24px */
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  position: relative;
+  border-radius: 8px;
+  padding: 9px 24px;
+  color: white;
+  text-decoration: none;
+  background: transparent;
+  transition: all linear .3s;
+}
+
+.nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, #4c4687, #ffffff);
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+
+}
+
+.nav a:hover {
+  background-color: #ffffff;
+  color: #111827;
+}
+.nav a.active {
+    background-color: white;
+    color: black; /* optional */
+}
+
+.header .logo{
+  max-width: 215px;
+}
+/* BUTTON */
+.cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  padding: 10px 24px;
+  text-transform: uppercase;
+
+  background: #F5D74F;
+  color: #28384F;
+  border-radius: 8px;
+  cursor: pointer;
+
+  width: fit-content;
+}
+
+
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  display: block;
+  border-radius: 2px;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: #0b1220;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 30px;
+  gap: 25px;
+  z-index: 1000;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.mobile-menu button {
+  padding: 10px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .nav,
+  .cta-btn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  .header .logo{
+  max-width: 115px;
+}
+}
+
+/* header marque */
+.marquee {
+  position: relative;
+  z-index: 1100;
+}
+
+.heading-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  animation: scroll 18s linear infinite;
+}
+
+.dot-icon {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: pause on hover */
+.marquee:hover .heading-marquee-track {
+  animation-play-state: paused;
+}
+
+#section-grid-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-grid-cell {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: #37325B;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*  */
