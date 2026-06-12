@@ -171,87 +171,149 @@ document.addEventListener("DOMContentLoaded", () => {
   }, "-=0.5");
 
 });
-// banner grid animation
-document.addEventListener("DOMContentLoaded", () => {
+class BlinkingGrid {
+  constructor(element, {
+    activeColor = "#F4F4F4",
+    inactiveColor = "rgba(0,0,0,0)",
+    borderColor = "rgba(255,255,255,0.03)",
 
-    const grid = document.getElementById("section-grid-bg");
+    mobileBreakpoint = 768,
+    mobileCellSize = 50,
+    desktopCellSize = 120,
 
-    let blinkInterval;
-    let resizeTimeout;
+    maxMobileRows = 20
+  } = {}) {
 
-    const ACTIVE_COLOR = "#37325B";
-    const INACTIVE_COLOR = "rgba(0,0,0,0)";
+    this.grid = element;
 
-    function createGrid() {
-        if (blinkInterval) clearInterval(blinkInterval);
+    this.ACTIVE_COLOR = activeColor;
+    this.INACTIVE_COLOR = inactiveColor;
+    this.BORDER_COLOR = borderColor;
 
-        grid.innerHTML = "";
+    this.mobileBreakpoint = mobileBreakpoint;
+    this.mobileCellSize = mobileCellSize;
+    this.desktopCellSize = desktopCellSize;
+    this.maxMobileRows = maxMobileRows;
 
-        // Responsive cell size
-        const cellSize = window.innerWidth < 768 ? 80 : 120;
+    this.blinkInterval = null;
+    this.resizeTimeout = null;
 
-        const cols = Math.ceil(window.innerWidth / cellSize);
-        const rows = Math.ceil(window.innerHeight / cellSize);
+    this.init();
+  }
 
-        grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-        grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  init() {
+    if (!this.grid) return;
 
-        const totalCells = cols * rows;
-
-        for (let i = 0; i < totalCells; i++) {
-            const cell = document.createElement("div");
-            cell.className = "section-grid-cell";
-            cell.style.backgroundColor = INACTIVE_COLOR;
-            grid.appendChild(cell);
-        }
-
-        startBlinking();
-    }
-
-    function startBlinking() {
-        const cells = grid.children;
-
-        function blinkCell() {
-            const cell = cells[Math.floor(Math.random() * cells.length)];
-            if (!cell) return;
-
-            gsap.fromTo(
-                cell,
-                {
-                    backgroundColor: INACTIVE_COLOR
-                },
-                {
-                    backgroundColor: ACTIVE_COLOR,
-                    duration: gsap.utils.random(2.5, 4.5), // slower fade
-                    ease: "sine.inOut",
-                    yoyo: true,
-                    repeat: 1,
-                    overwrite: "auto"
-                }
-            );
-        }
-
-        // softer initial wave
-        for (let i = 0; i < 20; i++) {
-            gsap.delayedCall(Math.random() * 4, blinkCell);
-        }
-
-        // slower continuous flow
-        blinkInterval = setInterval(() => {
-            const count = gsap.utils.random(1, 3, 1); // fewer active cells
-
-            for (let i = 0; i < count; i++) {
-                gsap.delayedCall(Math.random() * 2.5, blinkCell);
-            }
-        }, 1000); // slower cycle
-    }
-
-    createGrid();
+    this.createGrid();
 
     window.addEventListener("resize", () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(createGrid, 250);
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = setTimeout(() => this.createGrid(), 250);
     });
+  }
+
+  createGrid() {
+    if (this.blinkInterval) clearInterval(this.blinkInterval);
+
+    this.grid.innerHTML = "";
+
+    const isMobile = window.innerWidth < this.mobileBreakpoint;
+
+    const cellSize = isMobile
+      ? this.mobileCellSize
+      : this.desktopCellSize;
+
+    // ✅ WIDTH based columns (stable everywhere)
+    const cols = Math.ceil(window.innerWidth / cellSize);
+
+    // ✅ HEIGHT based on ACTUAL SECTION, not viewport
+    const gridHeight = this.grid.offsetHeight || this.grid.parentElement?.offsetHeight || window.innerHeight;
+
+    let rows = Math.ceil(gridHeight / cellSize);
+
+    // optional mobile cap (prevents extreme density)
+    if (isMobile) {
+      rows = Math.min(rows, this.maxMobileRows);
+    }
+
+    this.grid.style.display = "grid";
+    this.grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    this.grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+    const totalCells = cols * rows;
+
+    for (let i = 0; i < totalCells; i++) {
+      const cell = document.createElement("div");
+
+      cell.className = "section-grid-cell";
+
+      // base styling (border controlled per instance)
+      cell.style.backgroundColor = this.INACTIVE_COLOR;
+      cell.style.border = `1px solid ${this.BORDER_COLOR}`;
+
+      this.grid.appendChild(cell);
+    }
+
+    this.startBlinking();
+  }
+
+  startBlinking() {
+    const cells = this.grid.children;
+
+    const blinkCell = () => {
+      const cell = cells[Math.floor(Math.random() * cells.length)];
+      if (!cell) return;
+
+      gsap.fromTo(
+        cell,
+        {
+          backgroundColor: this.INACTIVE_COLOR,
+          boxShadow: "0 0 0px rgba(0,0,0,0)"
+        },
+        {
+          backgroundColor: this.ACTIVE_COLOR,
+          boxShadow: `0 0 12px ${this.ACTIVE_COLOR}33`,
+          duration: gsap.utils.random(2.5, 4.5),
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: 1,
+          overwrite: "auto"
+        }
+      );
+    };
+
+    // initial wave
+    for (let i = 0; i < 20; i++) {
+      gsap.delayedCall(Math.random() * 4, blinkCell);
+    }
+
+    // continuous flow
+    this.blinkInterval = setInterval(() => {
+      const count = gsap.utils.random(1, 3, 1);
+
+      for (let i = 0; i < count; i++) {
+        gsap.delayedCall(Math.random() * 2.5, blinkCell);
+      }
+    }, 1000);
+  }
+
+  destroy() {
+    if (this.blinkInterval) clearInterval(this.blinkInterval);
+    if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+    this.grid.innerHTML = "";
+  }
+}
+
+/* INIT MULTIPLE GRIDS WITH DATA ATTRIBUTES */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".section-grid-bg").forEach((grid) => {
+
+    new BlinkingGrid(grid, {
+      activeColor: grid.dataset.active || "#F4F4F4",
+      borderColor: grid.dataset.border || "rgba(255,255,255,0.03)"
+    });
+
+  });
 });
 
 // Common CTA btn Animation

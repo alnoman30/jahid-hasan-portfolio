@@ -453,7 +453,7 @@ html.lenis body {
   animation-play-state: paused;
 }
 
-#section-grid-bg {
+.section-grid-bg {
   position: absolute;
   inset: 0;
   display: grid;
@@ -465,7 +465,6 @@ html.lenis body {
 
 .section-grid-cell {
   border: 1px solid rgba(255, 255, 255, 0.03);
-  background: #37325B;
   box-sizing: border-box;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -515,7 +514,6 @@ html.lenis body {
   position: absolute;
   left: 0;
   top: 0;
-
   width: 180%;
   aspect-ratio: 1;
   border-radius: 999px;
