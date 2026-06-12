@@ -68,53 +68,45 @@
 }
 
 .container {
-    max-width: 1535px;
-    width: 100%;
-    margin: auto;
-    padding-inline: 20px;
+  max-width: 1535px;
+  width: 100%;
+  margin: auto;
+  padding-inline: 20px;
 }
 
 @media (max-width:640px) {
-    .container {
-        padding-inline: 16px;
-    }
-}
-
-body {
-    font-family: "Farro", sans-serif !important;
+  .container {
+    padding-inline: 16px;
+  }
 }
 
 html {
-    scroll-behavior: smooth;
-    font-family: "Farro", sans-serif !important;
-}
-
-p {
-    font-weight: 300 !important;
+  scroll-behavior: smooth;
 }
 
 @layer base {
-    .img-fluid {
-        max-width: 100%;
-        height: auto;
-    }
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .section-padding {
-    padding-block: 96px;
+  padding-block: 96px;
 }
 
 @media (max-width:1024px) {
-    .section-padding {
-        padding-block: 60px;
-    }
+  .section-padding {
+    padding-block: 60px;
+  }
 }
 
 @media (max-width:640px) {
-    .section-padding {
-        padding-block: 48px;
-    }
+  .section-padding {
+    padding-block: 48px;
+  }
 }
+
 /* =========================
    CSS RESET / BASE
 ========================= */
@@ -131,7 +123,7 @@ p {
 /* HTML & body */
 body {
   height: 100%;
-  font-family: "Inter", sans-serif;
+  font-family: 'Clash Grotesk';
   overflow-x: hidden;
 
 }
@@ -191,16 +183,18 @@ html.lenis body {
 
 /* Lenis end */
 
-.header-section{
+.header-section {
 
-  background: #37325B;
+  background: transparent;
 }
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   height: 80px;
+  z-index: 9999;
 }
 
 
@@ -212,19 +206,23 @@ html.lenis body {
 
 .nav a {
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 150%;
-  /* 24px */
   letter-spacing: 1.6px;
   text-transform: uppercase;
+
   position: relative;
+  overflow: hidden;
+
   border-radius: 8px;
   padding: 9px 24px;
-  color: white;
+
+  color: #fff;
   text-decoration: none;
+
   background: transparent;
-  transition: all linear .3s;
+  transition: background-color .35s ease,
+    color .35s ease;
 }
 
 .nav a::before {
@@ -238,42 +236,117 @@ html.lenis body {
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  pointer-events: none;
 
+  pointer-events: none;
 }
 
-.nav a:hover {
-  background-color: #ffffff;
+/* Existing hover style */
+.nav a:hover,
+.nav a.active {
+  background: #fff;
   color: #111827;
 }
-.nav a.active {
-    background-color: white;
-    color: black; /* optional */
+
+/* Text animation */
+.nav-text {
+  position: relative;
+  display: block;
+  height: 24px;
+  overflow: hidden;
 }
 
-.header .logo{
+.nav-text span {
+  display: block;
+  transition: transform .5s cubic-bezier(.76, 0, .24, 1);
+}
+
+.nav-text span:first-child {
+  transform: translateY(0%);
+}
+
+.nav-text span:last-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  transform: translateY(100%);
+}
+
+/* Text slides */
+.nav a:hover .nav-text span:first-child,
+.nav a.active .nav-text span:first-child {
+  transform: translateY(-100%);
+}
+
+.nav a:hover .nav-text span:last-child,
+.nav a.active .nav-text span:last-child {
+  transform: translateY(0%);
+}
+
+.header .logo {
   max-width: 215px;
 }
-/* BUTTON */
-.cta-btn {
+
+/*   BUTTON */
+.header-cta-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  font-size: 14px;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+  padding: 10px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 8px;
+  line-height: 22px;
+}
+
+.cta-btn-label {
+  position: relative;
+  z-index: 2;
+
   display: flex;
   align-items: center;
   gap: 8px;
 
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22px;
-  padding: 10px 24px;
-  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
 
-  background: #F5D74F;
-  color: #28384F;
-  border-radius: 8px;
-  cursor: pointer;
+.cta-btn-label a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  width: fit-content;
+.cta-btn-flair {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.cta-btn-flair::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 180%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+
+  background: #ffffff;
+  /* same as previous button */
+
+  transform: translate(-50%, -50%);
 }
 
 
@@ -300,9 +373,9 @@ html.lenis body {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 70%;
+  width: 100%;
   height: 100vh;
-  background: #0b1220;
+  background: linear-gradient(180deg, rgba(44, 38, 82, 1) 0%, rgba(107, 83, 255, 1) 100%);
   display: flex;
   flex-direction: column;
   padding: 100px 30px;
@@ -313,32 +386,12 @@ html.lenis body {
 .mobile-menu a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-.mobile-menu button {
-  padding: 10px;
-  background: #3b82f6;
-  border: none;
-  color: white;
-  border-radius: 6px;
-}
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
 
-  .nav,
-  .cta-btn {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-  .header .logo{
-  max-width: 115px;
-}
-}
 
 /* header marque */
 .marquee {
@@ -395,3 +448,135 @@ html.lenis body {
 }
 
 /*  */
+
+
+/* Common cta button  */
+.cta-btn-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease;
+}
+
+.cta-btn-label {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.cta-btn-label img {
+  transition: filter 0.3s ease;
+}
+
+.cta-btn-hover:hover .cta-btn-label {
+  color: #111827;
+}
+
+.cta-btn-hover:hover .cta-btn-label img {
+  filter: brightness(0);
+}
+
+.cta-btn-flair {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.cta-btn-flair::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 180%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  transform: translate(-50%, -50%);
+}
+
+/* Banner */
+.electron-rotate {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RESPONSIVE */
+
+/* 2xl and below */
+@media (max-width: 1535px) {}
+
+/* xl and below */
+@media (max-width: 1279px) {}
+
+/* lg and below */
+@media (max-width: 1023px) {
+
+  .header .logo {
+    max-width: 170px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav a {
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 1.4px;
+
+    border-radius: 8px;
+    padding: 9px 20px;
+  }
+
+  .header-cta-btn {
+    padding: 10px 15px;
+  }
+}
+
+/* md and below */
+@media (max-width: 767px) {
+
+  .nav,
+  .header-cta-btn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .header .logo {
+    max-width: 160px;
+  }
+}

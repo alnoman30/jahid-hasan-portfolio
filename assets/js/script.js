@@ -57,6 +57,7 @@ hamburger.addEventListener("click", () => {
 
 // 
 document.addEventListener("DOMContentLoaded", () => {
+
     const grid = document.getElementById("section-grid-bg");
 
     let blinkInterval;
@@ -70,7 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         grid.innerHTML = "";
 
-        const cellSize = 100;
+        // Responsive cell size
+        const cellSize = window.innerWidth < 768 ? 80 : 120;
 
         const cols = Math.ceil(window.innerWidth / cellSize);
         const rows = Math.ceil(window.innerHeight / cellSize);
@@ -135,3 +137,119 @@ document.addEventListener("DOMContentLoaded", () => {
         resizeTimeout = setTimeout(createGrid, 250);
     });
 });
+
+// Common CTA btn Animation
+class CTAButtonHover {
+    constructor(button) {
+        this.button = button;
+        this.flair = button.querySelector(".cta-btn-flair");
+
+        if (!this.flair) return;
+
+        this.xSet = gsap.quickSetter(this.flair, "xPercent");
+        this.ySet = gsap.quickSetter(this.flair, "yPercent");
+
+        this.initEvents();
+    }
+
+    getXY(e) {
+        const rect = this.button.getBoundingClientRect();
+
+        const x = gsap.utils.clamp(
+            0,
+            100,
+            gsap.utils.mapRange(
+                0,
+                rect.width,
+                0,
+                100,
+                e.clientX - rect.left
+            )
+        );
+
+        const y = gsap.utils.clamp(
+            0,
+            100,
+            gsap.utils.mapRange(
+                0,
+                rect.height,
+                0,
+                100,
+                e.clientY - rect.top
+            )
+        );
+
+        return { x, y };
+    }
+
+    initEvents() {
+        this.button.addEventListener("mouseenter", (e) => {
+            const { x, y } = this.getXY(e);
+
+            this.xSet(x);
+            this.ySet(y);
+
+            gsap.to(this.flair, {
+                scale: 1,
+                duration: 0.45,
+                ease: "power3.out"
+            });
+        });
+
+        this.button.addEventListener("mousemove", (e) => {
+            const { x, y } = this.getXY(e);
+
+            gsap.to(this.flair, {
+                xPercent: x,
+                yPercent: y,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        this.button.addEventListener("mouseleave", (e) => {
+            const { x, y } = this.getXY(e);
+
+            gsap.killTweensOf(this.flair);
+
+            gsap.to(this.flair, {
+                xPercent: x > 90 ? x + 20 : x < 10 ? x - 20 : x,
+                yPercent: y > 90 ? y + 20 : y < 10 ? y - 20 : y,
+                scale: 0,
+                duration: 0.35,
+                ease: "power3.out"
+            });
+        });
+    }
+}
+
+document.querySelectorAll(".cta-btn-hover").forEach((button) => {
+    new CTAButtonHover(button);
+});
+
+
+
+// PROFILE CARD ANIMATION 
+gsap.fromTo(".profile-card",
+    {
+        x: 120,
+        opacity: 0
+    },
+    {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".hero-contents",
+            start: "top 80%",
+            end: "bottom 50%",
+
+            // play on enter, reverse on leave
+            toggleActions: "play reverse play reverse",
+
+            // optional: makes it more responsive on resize
+            invalidateOnRefresh: true
+        }
+    }
+);
