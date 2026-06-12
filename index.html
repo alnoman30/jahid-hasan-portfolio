@@ -148,10 +148,10 @@
 
         <!-- floating image and cards -->
         <div class="absolute top-40 left-50 md:left-20 electron-rotate">
-            <img src="assets/images/electron.png" alt="electron" class="w-16 sm:w-20 md:w-28 lg:w-full h-auto">
+            <img src="assets/images/electron.png" alt="electron" class="w-20 sm:w-28 md:w-32 lg:w-full h-auto">
         </div>
         <!-- Profile Details -->
-        <div class="profile-card absolute right-5 bottom-40 flex items-center justify-center">
+        <div class="hidden  md:flex profile-card absolute right-5 bottom-40  items-center justify-center">
 
             <div class="relative bg-white rounded-[25px] p-1 border border-white">
 
@@ -234,13 +234,13 @@
 
                 <!-- Heading -->
                 <h1
-                    class="text-[40px] lg:text-[80px]  font-bold leading-tight md:leading-[100%] mb-6">
+                    class="text-[50px] sm:text-[70px] md:text-[80px]  font-bold leading-tight md:leading-[100%] mb-2 sm:mb-4 md:mb-6">
                     Your local business deserves to rank first in your city.
                 </h1>
 
                 <!-- Paragraph -->
                 <p
-                    class="text-[14px] sm:text-lg md:text-xl font-normal leading-relaxed md:leading-[150%] max-w-226 text-start sm:text-center mx-auto px-2">
+                    class="text-[14px] sm:text-lg md:text-xl font-normal leading-relaxed md:leading-[150%] max-w-226 text-start sm:text-center mx-auto ">
                     I'm Jahid Hossain — an Advanced Local SEO Expert with 6 years of hands-on experience from working
                     with top SEO agencies abroad. I specialize in getting local service businesses to the top of Google
                     Maps, local search results, and AI-driven search. 150+ successful projects across HVAC, Plumbing,
@@ -248,10 +248,10 @@
                 </p>
 
                 <!-- buttons -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10 px-4">
+                <div class="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mt-4 sm:mt-6 md:mt-10 px-4">
 
                     <a href="#"
-                        class="cta-btn-hover bg-tomato   px-6 sm:px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 uppercase w-full sm:w-auto"
+                        class="cta-btn-hover bg-tomato  px-6 sm:px-8 py-2 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 uppercase w-full sm:w-auto"
                         data-block="button">
 
                         <span class="cta-btn-flair"></span>
@@ -264,7 +264,7 @@
 
                     </a>
                     <a href="#"
-                        class="hero-btn cta-btn-hover bg-transparent border border-white px-6 sm:px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 uppercase w-full sm:w-auto">
+                        class="hero-btn cta-btn-hover bg-transparent border border-white px-6 sm:px-8 py-2 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 uppercase w-full sm:w-auto">
 
                         <span class="cta-btn-flair"></span>
 
@@ -278,18 +278,49 @@
 
                 </div>
 
+                <!-- Mobile view profile card -->
+                <div class="md:hidden flex profile-card items-center justify-center mt-5">
+
+                    <div class="relative bg-white rounded-[18px] p-1 border border-white w-52.5">
+
+                        <!-- Image Area -->
+                        <div class="relative w-full h-65 rounded-[18px] overflow-hidden bg-[#9AD6F4]">
+
+                            <img src="assets/images/jahid.png" alt="Jahid Hossain"
+                                class="w-full h-full object-cover object-top" />
+
+                        </div>
+
+                        <!-- Profile Detail Card -->
+                        <div class="absolute bottom-0 left-0 right-0 z-20 bg-white rounded-xl px-3 py-3 text-center">
+
+                            <h3 class="text-black text-lg font-semibold leading-[130%] mb-1">
+                                Jahid Hossain
+                            </h3>
+
+                            <p class="text-black text-sm font-normal leading-[150%]">
+                                Advanced Local SEO Expert
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
 
             <!-- Bottom stats -->
-            <div class="flex flex-row items-stretch justify-between gap-8 text-white pt-22.5 pb-10">
+            <div
+                class="flex flex-col sm:flex-row items-stretch justify-between gap-2 sm:gap-8 text-white md:pt-22.5 pb-10">
 
                 <!-- Item 1 -->
                 <div class="text-center flex-1 py-2">
-                    <h3 class="text-[60px] font-normal leading-[130%]">
+                    <h3 class="text-[40px] md:text-[60px] font-normal leading-[130%]">
                         6
                     </h3>
-                    <p class="text-xl font-medium leading-[150%] mt-2">
+                    <p class="text-base md:text-xl font-medium leading-[150%] mt-2">
                         Years of Agency Experience
                     </p>
                 </div>
@@ -299,10 +330,10 @@
 
                 <!-- Item 2 -->
                 <div class="text-center flex-1 py-2">
-                    <h3 class="text-[60px] font-normal leading-[130%]">
+                    <h3 class="text-[40px] md:text-[60px] font-normal leading-[130%]">
                         150+
                     </h3>
-                    <p class="text-xl font-medium leading-[150%] mt-2">
+                    <p class="text-base md:text-xl font-medium leading-[150%] mt-2">
                         Projects Delivered
                     </p>
                 </div>
@@ -312,10 +343,10 @@
 
                 <!-- Item 3 -->
                 <div class="text-center flex-1 py-2">
-                    <h3 class="text-[60px] font-normal leading-[130%]">
+                    <h3 class="text-[40px] md:text-[60px] font-normal leading-[130%]">
                         Google
                     </h3>
-                    <p class="text-xl font-medium leading-[150%] mt-2">
+                    <p class="text-base md:text-xl font-medium leading-[150%] mt-2">
                         Maps & Map Pack Specialist
                     </p>
                 </div>
