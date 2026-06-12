@@ -183,20 +183,43 @@ html.lenis body {
 
 /* Lenis end */
 
-.header-section {
 
+
+/* Header section css */
+.header-section {
+  position: relative;
+  width: 100%;
   background: transparent;
+  transition: background .3s ease;
+  z-index: 9999;
+}
+
+.header-section.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  z-index: 9999;
+}
+
+.header-section.is-sticky .header {
+  height: 70px;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
   height: 80px;
+  position: relative;
   z-index: 9999;
+  transition: height 0.5s ease;
 }
-
 
 
 .nav {

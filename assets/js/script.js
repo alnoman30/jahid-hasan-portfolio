@@ -25,7 +25,7 @@ if (typeof Lenis !== 'undefined') {
 }
 
 
-// 
+// mobile menu js
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 const spans = document.querySelectorAll(".hamburger span");
@@ -55,7 +55,123 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-// 
+// Header scroll animation
+gsap.registerPlugin(ScrollTrigger);
+
+  const header = document.querySelector(".header-section");
+  const marquee = document.querySelector(".marquee");
+
+  ScrollTrigger.create({
+    trigger: marquee,
+    start: "bottom top",
+
+    onEnter: () => {
+      header.classList.add("is-sticky");
+
+      gsap.fromTo(
+        header,
+        {
+          y: -100,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out"
+        }
+      );
+    },
+
+    onLeaveBack: () => {
+      header.classList.remove("is-sticky");
+
+      gsap.to(header, {
+        y: 0,
+        opacity: 1,
+        duration: 0.2
+      });
+    }
+  });
+
+
+//   Hero content staged animation
+document.addEventListener("DOMContentLoaded", () => {
+
+  gsap.registerPlugin(SplitText);
+
+  // =========================
+  // HERO TITLE SPLIT REVEAL
+  // =========================
+  const title = document.querySelector(".hero-title");
+
+  const split = new SplitText(title, {
+    type: "words, lines",
+    linesClass: "line"
+  });
+
+  // Clip lines for clean reveal
+  gsap.set(split.lines, {
+    overflow: "hidden",
+    display: "block"
+  });
+
+  gsap.set(split.words, {
+    display: "inline-block"
+  });
+
+  // =========================
+  // HERO STATS + DIVIDERS
+  // =========================
+  const stats = document.querySelectorAll(".hero-bottom-stats .stat-item");
+  const dividers = document.querySelectorAll(".hero-bottom-stats .bg-white\\/24");
+
+  gsap.set(stats, {
+    opacity: 0,
+    y: 40
+  });
+
+  gsap.set(dividers, {
+    scaleY: 0,
+    transformOrigin: "top center",
+    opacity: 0.3
+  });
+
+  // =========================
+  // MASTER TIMELINE
+  // =========================
+  const tl = gsap.timeline({ delay: 0.2 });
+
+  // Title animation
+  tl.from(split.words, {
+    yPercent: 120,
+    rotateX: -40,
+    opacity: 0,
+    transformOrigin: "0% 50% -50",
+    duration: 1,
+    ease: "power4.out",
+    stagger: 0.03
+  })
+
+  // Stats animation (overlaps slightly)
+  .to(stats, {
+    opacity: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power4.out",
+    stagger: 0.15
+  }, "-=0.4")
+
+  // Divider animation
+  .to(dividers, {
+    scaleY: 1,
+    duration: 0.6,
+    ease: "power2.out",
+    stagger: 0.1
+  }, "-=0.5");
+
+});
+// banner grid animation
 document.addEventListener("DOMContentLoaded", () => {
 
     const grid = document.getElementById("section-grid-bg");
