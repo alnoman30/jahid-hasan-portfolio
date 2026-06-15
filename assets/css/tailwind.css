@@ -37,10 +37,19 @@
 
 @font-face {
   font-family: 'Clash Grotesk';
-  src: url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
+  src: url('../fonts/Aonic-Medium.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aonic Med';
+    src: 
+        url('../fonts/Aonic-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* =========================
@@ -64,6 +73,7 @@
 
   --font-urbanist: "Urbanist", sans-serif;
   --font-clash: "Clash Grotesk", sans-serif;
+  --font-aonic: 'Aonic Med';
 }
 
 /* =========================
@@ -422,8 +432,13 @@ html.lenis body {
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .marquee:hover .heading-marquee-track {
@@ -456,6 +471,194 @@ html.lenis body {
 }
 
 
+/* Footer */
+/* Footer Container Wrapper */
+.site-footer {
+  color: #ffffff;
+  overflow: hidden;
+}
+
+
+.site-footer .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Grid Layout for Main Content */
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr 1.8fr 3.5fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Navigation Columns styling */
+.footer-col h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 130%;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+
+/* Checkmark Custom Styling */
+.checkmark-list li {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.checkmark-item a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.checkmark-item a:hover {
+  color: #E3544C;
+  transform: translateX(5px);
+}
+
+.check-icon {
+  width: 18px;
+  /* adjust as needed */
+  height: 18px;
+  flex-shrink: 0;
+  /* prevents icon from shrinking */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Profile / Bio Column styling */
+.footer-profile-col h2 {
+  font-size: 40px;
+  font-weight: 500;
+  font-family: 'Aonic Med';
+}
+
+.footer-profile-col .subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: 'Clash Grotesk' !important;
+  margin-bottom: 24px;
+}
+
+.footer-profile-col .description {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  color: #ffffff;
+  opacity: 0.7;
+  margin-bottom: 25px;
+  max-width: 572px;
+}
+
+
+.footer-profile-col .subtext {
+  display: block;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  line-height: 150%;
+  opacity: 0.7;
+  margin-top: 16px;
+}
+
+/* Bottom Bar Footer Styling */
+.footer-bottom {
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #ffffff;
+}
+
+.footer-bottom-left,
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-bottom-right a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom-right a:hover {
+  color: #E3544C;
+}
+
+.bullet {
+  color: white;
+  font-size: 14px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bullet {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+}
 /* =========================
    EXTRA ANIMATIONS
 ========================= */
@@ -465,8 +668,13 @@ html.lenis body {
 }
 
 @keyframes spin {
-  from { transform: rotate(0); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* =========================
@@ -474,8 +682,13 @@ html.lenis body {
 ========================= */
 
 @media (max-width: 1023px) {
-  .header .logo { max-width: 170px; }
-  .nav { gap: 10px; }
+  .header .logo {
+    max-width: 170px;
+  }
+
+  .nav {
+    gap: 10px;
+  }
 
   .nav a {
     font-size: 14px;
@@ -489,6 +702,7 @@ html.lenis body {
 }
 
 @media (max-width: 767px) {
+
   .nav,
   .header-cta-btn {
     display: none;
