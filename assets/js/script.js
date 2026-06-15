@@ -171,10 +171,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }, "-=0.5");
 
 });
+
+
+// Background blink animation
 class BlinkingGrid {
   constructor(element, {
     activeColor = "#F4F4F4",
-    inactiveColor = "rgba(0,0,0,0)",
+    inactiveColor = "rgba(255,255,255,0.02)",
     borderColor = "rgba(255,255,255,0.03)",
 
     mobileBreakpoint = 768,
@@ -431,3 +434,28 @@ gsap.fromTo(".profile-card",
         }
     }
 );
+
+
+// Testimonial animation splidejs
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof Splide !== 'undefined') {
+
+    const splide = new Splide('#testimonial-splide', {
+      type: 'loop',
+      perPage: 1,
+      arrows: false,
+      pagination: false,
+      speed: 400,
+      drag: true,
+    }).mount();
+
+    // 👇 connect custom arrows
+    document
+      .getElementById('testimonial-prev')
+      .addEventListener('click', () => splide.go('<'));
+
+    document
+      .getElementById('testimonial-next')
+      .addEventListener('click', () => splide.go('>'));
+  }
+});
