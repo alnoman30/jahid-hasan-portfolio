@@ -581,3 +581,76 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+// Filter case study animations
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cases = document.querySelectorAll(".case-item");
+
+  let activeFilter = "all";
+  let isAnimating = false;
+
+  function setActive(btn) {
+    buttons.forEach((b) => {
+      b.classList.remove("bg-tomato", "text-white", "border-tomato");
+      b.classList.add("bg-white", "text-black", "border-[#E5E8ED]");
+    });
+
+    btn.classList.add("bg-tomato", "text-white", "border-tomato");
+    btn.classList.remove("bg-white", "text-black", "border-[#E5E8ED]");
+  }
+
+  const defaultBtn = document.querySelector('[data-filter="all"]');
+  if (defaultBtn) setActive(defaultBtn);
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      if (filter === activeFilter || isAnimating) return;
+
+      activeFilter = filter;
+      isAnimating = true;
+      setActive(btn);
+
+      cases.forEach((item) => {
+        const category = item.dataset.category;
+        const show = filter === "all" || category === filter;
+
+        if (show) {
+          item.style.display = "flex";
+
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 10 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.25,
+              ease: "power2.out"
+            }
+          );
+        } else {
+          gsap.to(item, {
+            opacity: 0,
+            y: 10,
+            duration: 0.2,
+            ease: "power1.out",
+            onComplete: () => {
+              item.style.display = "none";
+            }
+          });
+        }
+      });
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, 250);
+    });
+  });
+});
+
+
+
+// 
