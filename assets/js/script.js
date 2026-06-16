@@ -251,7 +251,7 @@ class BlinkingGrid {
     borderColor = "rgba(255,255,255,0.03)",
 
     mobileBreakpoint = 768,
-    mobileCellSize = 50,
+    mobileCellSize = 140,
     desktopCellSize = 120,
 
     maxMobileRows = 20
