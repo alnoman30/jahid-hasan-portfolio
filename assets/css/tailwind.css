@@ -37,19 +37,19 @@
 
 @font-face {
   font-family: 'Clash Grotesk';
-  src: url('../fonts/Aonic-Medium.ttf') format('truetype');
+  src: url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-    font-family: 'Aonic Med';
-    src: 
-        url('../fonts/Aonic-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Aonic Med';
+  src:
+    url('../fonts/Aonic-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =========================
@@ -337,7 +337,7 @@ html.lenis body {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 /* hover effect */
@@ -372,8 +372,24 @@ html.lenis body {
   width: 180%;
   aspect-ratio: 1;
   border-radius: 999px;
-  background: #fff;
+  background: #FFFFFF;
   transform: translate(-50%, -50%);
+}
+
+/* For Transparent button */
+.cta-btn-hover-tomato .cta-btn-flair::before {
+  background: #E3544C;
+  transition: filter 0.3s ease;
+}
+
+.cta-btn-hover-tomato:hover .cta-btn-label {
+  color: #ffffff;
+  transition: filter 0.3s ease;
+}
+
+.cta-btn-hover-tomato:hover .cta-btn-label img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
 }
 
 /* =========================
@@ -471,8 +487,59 @@ html.lenis body {
 }
 
 
+/* FAQ container */
+.faq-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.faq-icon svg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  transform-origin: center;
+}
+
+/* default state */
+.icon-up {
+  opacity: 0;
+  transform: scale(0.6) rotate(-90deg);
+}
+
+.icon-down {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* active state */
+.faq-item.is-active .icon-up {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.faq-item.is-active .icon-down {
+  opacity: 0;
+  transform: scale(0.6) rotate(90deg);
+}
+
+.faq-trigger span {
+  transition:
+    font-size 0.3s ease,
+    color 0.3s ease,
+    font-weight 0.3s ease;
+}
+
+/* Active border */
+.faq-item.is-active {
+  border-color: #28384F;
+}
+
+.faq-item.is-active .faq-trigger span {
+  font-size: 24px;
+}
+
 /* Footer */
-/* Footer Container Wrapper */
 .site-footer {
   color: #ffffff;
   overflow: hidden;
@@ -654,11 +721,13 @@ html.lenis body {
     display: none;
   }
 }
+
 @media (max-width: 420px) {
   .footer-main {
     grid-template-columns: 1fr;
   }
 }
+
 /* =========================
    EXTRA ANIMATIONS
 ========================= */
@@ -720,3 +789,5 @@ html.lenis body {
     height: 50px;
   }
 }
+
+/*  */

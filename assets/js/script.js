@@ -1,5 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
+const exists = (selector) => document.querySelector(selector);
+
 
 // ──======================================= Smooth scroll (Lenis)======================================== ──
 if (typeof Lenis !== 'undefined') {
@@ -30,36 +32,74 @@ const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 const spans = document.querySelectorAll(".hamburger span");
 
-let isOpen = false;
+if (hamburger && mobileMenu && spans.length >= 3) {
 
-hamburger.addEventListener("click", () => {
-  isOpen = !isOpen;
+  let isOpen = false;
 
-  if (isOpen) {
-    // Open menu
-    gsap.to(mobileMenu, { right: 0, duration: 0.5, ease: "power3.out" });
+  hamburger.addEventListener("click", () => {
+    isOpen = !isOpen;
 
-    // Animate hamburger to X
-    gsap.to(spans[0], { rotate: 45, y: 8, duration: 0.3 });
-    gsap.to(spans[1], { opacity: 0, duration: 0.2 });
-    gsap.to(spans[2], { rotate: -45, y: -8, duration: 0.3 });
+    if (isOpen) {
+      // Open menu
+      gsap.to(mobileMenu, {
+        right: 0,
+        duration: 0.5,
+        ease: "power3.out"
+      });
 
-  } else {
-    // Close menu
-    gsap.to(mobileMenu, { right: "-100%", duration: 0.5, ease: "power3.in" });
+      // Animate hamburger to X
+      gsap.to(spans[0], {
+        rotate: 45,
+        y: 8,
+        duration: 0.3
+      });
 
-    // Reset hamburger
-    gsap.to(spans[0], { rotate: 0, y: 0, duration: 0.3 });
-    gsap.to(spans[1], { opacity: 1, duration: 0.2 });
-    gsap.to(spans[2], { rotate: 0, y: 0, duration: 0.3 });
-  }
-});
+      gsap.to(spans[1], {
+        opacity: 0,
+        duration: 0.2
+      });
+
+      gsap.to(spans[2], {
+        rotate: -45,
+        y: -8,
+        duration: 0.3
+      });
+
+    } else {
+      // Close menu
+      gsap.to(mobileMenu, {
+        right: "-100%",
+        duration: 0.5,
+        ease: "power3.in"
+      });
+
+      // Reset hamburger
+      gsap.to(spans[0], {
+        rotate: 0,
+        y: 0,
+        duration: 0.3
+      });
+
+      gsap.to(spans[1], {
+        opacity: 1,
+        duration: 0.2
+      });
+
+      gsap.to(spans[2], {
+        rotate: 0,
+        y: 0,
+        duration: 0.3
+      });
+    }
+  });
+
+}
 
 // Header scroll animation
-gsap.registerPlugin(ScrollTrigger);
+const header = document.querySelector(".header-section");
+const marquee = document.querySelector(".marquee");
 
-  const header = document.querySelector(".header-section");
-  const marquee = document.querySelector(".marquee");
+if (header && marquee) {
 
   ScrollTrigger.create({
     trigger: marquee,
@@ -94,81 +134,111 @@ gsap.registerPlugin(ScrollTrigger);
     }
   });
 
+}
+
 
 //   Hero content staged animation
 document.addEventListener("DOMContentLoaded", () => {
+
+  if (
+    typeof gsap === "undefined" ||
+    typeof SplitText === "undefined"
+  ) return;
+
+  const title = document.querySelector(".hero-title");
+
+  // stop if hero not present
+  if (!title) return;
 
   gsap.registerPlugin(SplitText);
 
   // =========================
   // HERO TITLE SPLIT REVEAL
   // =========================
-  const title = document.querySelector(".hero-title");
-
   const split = new SplitText(title, {
     type: "words, lines",
     linesClass: "line"
   });
 
-  // Clip lines for clean reveal
-  gsap.set(split.lines, {
-    overflow: "hidden",
-    display: "block"
-  });
+  if (split.lines?.length) {
+    gsap.set(split.lines, {
+      overflow: "hidden",
+      display: "block"
+    });
+  }
 
-  gsap.set(split.words, {
-    display: "inline-block"
-  });
+  if (split.words?.length) {
+    gsap.set(split.words, {
+      display: "inline-block"
+    });
+  }
 
   // =========================
   // HERO STATS + DIVIDERS
   // =========================
-  const stats = document.querySelectorAll(".hero-bottom-stats .stat-item");
-  const dividers = document.querySelectorAll(".hero-bottom-stats .bg-white\\/24");
+  const stats = document.querySelectorAll(
+    ".hero-bottom-stats .stat-item"
+  );
 
-  gsap.set(stats, {
-    opacity: 0,
-    y: 40
-  });
+  const dividers = document.querySelectorAll(
+    ".hero-bottom-stats .bg-white\\/24"
+  );
 
-  gsap.set(dividers, {
-    scaleY: 0,
-    transformOrigin: "top center",
-    opacity: 0.3
-  });
+  if (stats.length) {
+    gsap.set(stats, {
+      opacity: 0,
+      y: 40
+    });
+  }
+
+  if (dividers.length) {
+    gsap.set(dividers, {
+      scaleY: 0,
+      transformOrigin: "top center",
+      opacity: 0.3
+    });
+  }
 
   // =========================
   // MASTER TIMELINE
   // =========================
-  const tl = gsap.timeline({ delay: 0.2 });
+  const tl = gsap.timeline({
+    delay: 0.2
+  });
 
   // Title animation
-  tl.from(split.words, {
-    yPercent: 120,
-    rotateX: -40,
-    opacity: 0,
-    transformOrigin: "0% 50% -50",
-    duration: 1,
-    ease: "power4.out",
-    stagger: 0.03
-  })
+  if (split.words?.length) {
+    tl.from(split.words, {
+      yPercent: 120,
+      rotateX: -40,
+      opacity: 0,
+      transformOrigin: "0% 50% -50",
+      duration: 1,
+      ease: "power4.out",
+      stagger: 0.03
+    });
+  }
 
-  // Stats animation (overlaps slightly)
-  .to(stats, {
-    opacity: 1,
-    y: 0,
-    duration: 0.9,
-    ease: "power4.out",
-    stagger: 0.15
-  }, "-=0.4")
+  // Stats animation
+  if (stats.length) {
+    tl.to(stats, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9,
+      ease: "power4.out",
+      stagger: 0.15
+    }, "-=0.4");
+  }
 
   // Divider animation
-  .to(dividers, {
-    scaleY: 1,
-    duration: 0.6,
-    ease: "power2.out",
-    stagger: 0.1
-  }, "-=0.5");
+  if (dividers.length) {
+    tl.to(dividers, {
+      scaleY: 1,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.1
+    }, "-=0.5");
+  }
 
 });
 
@@ -411,51 +481,103 @@ document.querySelectorAll(".cta-btn-hover").forEach((button) => {
 
 
 // PROFILE CARD ANIMATION 
-gsap.fromTo(".profile-card",
-    {
-        x: 120,
-        opacity: 0
-    },
-    {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: ".hero-contents",
-            start: "top 80%",
-            end: "bottom 50%",
+const profileCard = document.querySelector(".profile-card");
+const heroContents = document.querySelector(".hero-contents");
 
-            // play on enter, reverse on leave
-            toggleActions: "play reverse play reverse",
+if (profileCard && heroContents) {
 
-            // optional: makes it more responsive on resize
-            invalidateOnRefresh: true
+    gsap.fromTo(
+        ".profile-card",
+        {
+            x: 120,
+            opacity: 0
+        },
+        {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".hero-contents",
+                start: "top 80%",
+                end: "bottom 50%",
+
+                // play on enter, reverse on leave
+                toggleActions: "play reverse play reverse",
+
+                // makes it responsive on resize
+                invalidateOnRefresh: true
+            }
         }
-    }
-);
+    );
+
+}
 
 
 // Testimonial animation splidejs
 document.addEventListener('DOMContentLoaded', function () {
-  if (typeof Splide !== 'undefined') {
 
-    const splide = new Splide('#testimonial-splide', {
-      type: 'loop',
-      perPage: 1,
-      arrows: false,
-      pagination: false,
-      speed: 400,
-      drag: true,
-    }).mount();
+  const slider = document.getElementById('testimonial-splide');
 
-    // 👇 connect custom arrows
-    document
-      .getElementById('testimonial-prev')
-      .addEventListener('click', () => splide.go('<'));
+  if (typeof Splide === 'undefined' || !slider) return;
 
-    document
-      .getElementById('testimonial-next')
-      .addEventListener('click', () => splide.go('>'));
+  const splide = new Splide('#testimonial-splide', {
+    type: 'loop',
+    perPage: 1,
+    arrows: false,
+    pagination: false,
+    speed: 400,
+    drag: true,
+  }).mount();
+
+  const prevBtn = document.getElementById('testimonial-prev');
+  const nextBtn = document.getElementById('testimonial-next');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => splide.go('<'));
   }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => splide.go('>'));
+  }
+
+});
+
+
+// FAQ animation
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".faq-item");
+
+  items.forEach(item => {
+    const content = item.querySelector(".faq-content");
+
+    gsap.set(content, {
+      height: 0,
+      overflow: "hidden"
+    });
+
+    item.querySelector(".faq-trigger").addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-active");
+
+      document.querySelectorAll(".faq-item").forEach(el => {
+        el.classList.remove("is-active");
+
+        gsap.to(el.querySelector(".faq-content"), {
+          height: 0,
+          duration: 0.4,
+          ease: "power2.inOut"
+        });
+      });
+
+      if (!isOpen) {
+        item.classList.add("is-active");
+
+        gsap.to(content, {
+          height: "auto",
+          duration: 0.5,
+          ease: "power2.inOut"
+        });
+      }
+    });
+  });
 });
