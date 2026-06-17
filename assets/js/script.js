@@ -556,7 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
       overflow: "hidden"
     });
 
-    item.querySelector(".faq-trigger").addEventListener("click", () => {
+    item.addEventListener("click", () => {
       const isOpen = item.classList.contains("is-active");
 
       document.querySelectorAll(".faq-item").forEach(el => {
