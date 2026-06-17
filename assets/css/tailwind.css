@@ -879,10 +879,12 @@ html.lenis body {
   .footer-main {
     margin-bottom: 30px;
   }
+
   .faq-icon {
-  position: relative;
-}
-.faq-item.is-active .faq-trigger span {
-  font-size: 18px;
-}
+    position: relative;
+  }
+
+  .faq-item.is-active .faq-trigger span {
+    font-size: 18px;
+  }
 }
