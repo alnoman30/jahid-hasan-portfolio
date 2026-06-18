@@ -195,6 +195,8 @@
 
     </section>
 
+
+
     <!-- Case Studies Portfolio Filter  -->
     <section class="bg-[#F9F9F9] filterd-projects relative section-padding">
         <!-- Animated Grid -->
@@ -249,7 +251,7 @@
 
             <!-- Active Showcase Case Study Card -->
 
-            <!-- grid -->
+            <!-- Featured projects -->
             <div class="grid grid-cols-1 md:grid-cols-1 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
 
                 <!-- CASE ITEM 1 -->
@@ -305,58 +307,6 @@
                     </div>
                 </a>
 
-                <!-- CASE ITEM 2 -->
-                <a href="#" class="group block">
-                    <div class="case-item bg-white rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-4xl shadow-[8px_16px_64px_0_rgba(40,56,79,0.08)] p-2 md:p-4 flex flex-col md:flex-row gap-3 sm:gap-5 md:gap-8 items-stretch col-span-1 transition-all duration-300"
-                        data-category="hvac">
-
-                        <!-- image area -->
-                        <div
-                            class="w-full md:w-[42%] h-75 sm:h-95 md:h-full overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl">
-                            <img src="assets/images/filters-project.png" alt="Case Study Billboard"
-                                class="w-full h-full object-cover block transform transition-transform duration-500 group-hover:scale-110" />
-                        </div>
-
-                        <!-- content area -->
-                        <div class="flex-1 flex flex-col justify-center items-start py-2">
-
-                            <span
-                                class="text-black text-[12px] sm:text-[14px] md:text-base font-bold leading-[100%] md:leading-[150%] tracking-[1.6px] px-4 py-1 border border-black rounded-sm uppercase mb-4">
-                                hvac
-                            </span>
-
-                            <h2
-                                class="text-black text-[28px] sm:text-[36px] md:text-[40px] font-semibold leading-[100%] md:leading-[130%] mb-4 transition-colors duration-300 group-hover:text-tomato">
-                                Phoenix HVAC Co. — #1 Map Pack across 5 service areas, phone calls tripled
-                            </h2>
-
-                            <p
-                                class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[150%] mb-3 sm:mb-6 md:mb-12">
-                                A family-owned HVAC company was spending $4,200/month on Google Ads and ranking nowhere
-                                organically. Through advanced GBP optimization, 5 service area pages, a review
-                                acquisition
-                                system, and targeted citation building — they hit #1 in the Map Pack for their primary
-                                city
-                                in 5 months, with calls tripling and ad spend cut by half.
-                            </p>
-
-                            <!-- button -->
-                            <div
-                                class="cta-btn-hover bg-tomato text-white px-6 sm:px-8 py-2 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 uppercase w-full sm:w-auto">
-
-                                <span class="cta-btn-flair"></span>
-
-                                <span
-                                    class="cta-btn-label text-sm sm:text-base font-semibold leading-6 flex items-center gap-2 relative z-10">
-                                    Read full case study
-                                    <img src="assets/images/white-arrow-right.svg" alt="arrow">
-                                </span>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
 
@@ -385,24 +335,36 @@
 
 
             <!-- Projects content grid -->
-            <div id="projectsGrid"
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 sm:gapy-6 md:gap-y-8 lg:gap-y-12">
+            <div id="works-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-12">
 
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -416,80 +378,110 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
-                        <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                        <img src="assets/images/recent-result.png"
+                            alt="Chicago Dental Group — 4 locations ranked in Map Pack"
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
-                            HVAC
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
+                            Dental
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
-                        Phoenix HVAC Co. — Map Pack #1 in 5 service areas
+                        Chicago Dental Group — 4 locations ranked in Map Pack
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
-                        Phoenix, AZ · USA · GBP + Local SEO + Citations
+                        Chicago, IL · USA · Multi-location Local SEO
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
-                        <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                        <img src="assets/images/recent-result.png"
+                            alt="London Plumbing Pro — emergency searches domination"
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
-                            HVAC
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
+                            Plumbing
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
-                        Phoenix HVAC Co. — Map Pack #1 in 5 service areas
+                        London Plumbing Pro — emergency searches domination
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
-                        Phoenix, AZ · USA · GBP + Local SEO + Citations
+                        London, UK · Emergency plumber + local SEO
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -503,51 +495,72 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
-                        <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                        <img src="assets/images/recent-result.png"
+                            alt="London Plumbing Pro — emergency searches domination"
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
-                            HVAC
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
+                            Plumbing
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
-                        Phoenix HVAC Co. — Map Pack #1 in 5 service areas
+                        London Plumbing Pro — emergency searches domination
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
-                        Phoenix, AZ · USA · GBP + Local SEO + Citations
+                        London, UK · Emergency plumber + local SEO
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -561,51 +574,72 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
-                        <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                        <img src="assets/images/recent-result.png"
+                            alt="London Plumbing Pro — emergency searches domination"
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
-                            HVAC
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
+                            Plumbing
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
-                        Phoenix HVAC Co. — Map Pack #1 in 5 service areas
+                        London Plumbing Pro — emergency searches domination
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
-                        Phoenix, AZ · USA · GBP + Local SEO + Citations
+                        London, UK · Emergency plumber + local SEO
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -619,22 +653,36 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
-                <!-- card -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -648,6 +696,7 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
 
             </div>

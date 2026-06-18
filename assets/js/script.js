@@ -653,4 +653,193 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// Stats grid counter animation
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const counters = document.querySelectorAll('.counter');
+
+    function formatNum(n, format) {
+        return format === 'comma'
+            ? n.toLocaleString()
+            : n;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+
+            if (el.dataset.animated === 'true') return;
+
+            el.dataset.animated = 'true';
+
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            const format = el.dataset.format || '';
+
+            const duration = 1800;
+            const steps = 60;
+            const increment = target / steps;
+            const interval = duration / steps;
+
+            let current = 0;
+
+            const timer = setInterval(() => {
+
+                current += increment;
+
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+
+                el.textContent =
+                    prefix +
+                    formatNum(Math.round(current), format) +
+                    suffix;
+
+            }, interval);
+
+            observer.unobserve(el);
+
+        });
+
+    }, {
+        threshold: 0.5
+    });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+
+});
+
 // 
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.gsap) return;
+
+  const grid = document.getElementById('works-grid');
+  if (!grid) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* =========================
+     SCROLL ANIMATIONS
+  ========================= */
+
+  gsap.from('.reveal-head', {
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#works',
+      start: 'top 80%'
+    }
+  });
+
+  gsap.from('.work-card', {
+    y: 60,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#works-grid',
+      start: 'top 85%'
+    }
+  });
+
+  /* =========================
+     CURSOR VIEW WORK EFFECT
+  ========================= */
+
+  const medias = grid.querySelectorAll('.work-media');
+
+  medias.forEach((media) => {
+    const btn = media.querySelector('.view-work');
+    if (!btn) return;
+
+    // initial state
+    gsap.set(btn, {
+      xPercent: -50,
+      yPercent: -50,
+      scale: 0,
+      opacity: 0
+    });
+
+    const xTo = gsap.quickTo(btn, 'x', {
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+
+    const yTo = gsap.quickTo(btn, 'y', {
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+
+    const getPos = (e) => {
+      const rect = media.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    };
+
+    const showBtn = () => {
+      gsap.to(btn, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.45,
+        ease: 'back.out(1.8)'
+      });
+    };
+
+    const hideBtn = () => {
+      gsap.to(btn, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
+    };
+
+    media.addEventListener('mouseenter', (e) => {
+      const pos = getPos(e);
+
+      gsap.set(btn, {
+        x: pos.x,
+        y: pos.y
+      });
+
+      showBtn();
+    });
+
+    media.addEventListener('mousemove', (e) => {
+      const pos = getPos(e);
+      xTo(pos.x);
+      yTo(pos.y);
+    });
+
+    media.addEventListener('mouseleave', () => {
+      hideBtn();
+    });
+  });
+
+  /* Hide all when leaving grid */
+  grid.addEventListener('mouseleave', () => {
+    grid.querySelectorAll('.view-work').forEach((btn) => {
+      gsap.to(btn, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
+    });
+  });
+});

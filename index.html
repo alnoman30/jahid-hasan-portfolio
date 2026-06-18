@@ -651,17 +651,17 @@
 
 
     <!-- Stats section -->
-    <section class="bg-tomato py-7.5 md:py-12">
+    <section id="statsSection" class="bg-tomato py-7.5 md:py-12">
         <div class="container">
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-0 text-white">
 
                 <!-- Item 1 -->
                 <div class="stat-item text-center py-2 md:border-r md:border-white/24">
-                    <h3
-                        class="text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%]">
-                        6
-                    </h3>
+                    <span
+                        class="text-white text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%] block">
+                        <span class="counter" data-target="6">0</span>
+                    </span>
                     <p
                         class="text-[14px] sm:text-base md:text-lg lg:text-xl font-medium leading-[130%] md:leading-[150%] mt-2">
                         Years of Agency Experience
@@ -670,10 +670,10 @@
 
                 <!-- Item 2 -->
                 <div class="stat-item text-center py-2 md:border-r md:border-white/24">
-                    <h3
-                        class="text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%]">
-                        150+
-                    </h3>
+                    <span
+                        class="text-white text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%] block">
+                        <span class="counter" data-target="150" data-suffix="+">0</span>
+                    </span>
                     <p
                         class="text-[14px] sm:text-base md:text-lg lg:text-xl font-medium leading-[130%] md:leading-[150%] mt-2">
                         Projects Delivered
@@ -682,10 +682,10 @@
 
                 <!-- Item 3 -->
                 <div class="stat-item text-center py-2 md:border-r md:border-white/24">
-                    <h3
-                        class="text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%]">
-                        7
-                    </h3>
+                    <span
+                        class="text-white text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%] block">
+                        <span class="counter" data-target="7">0</span>
+                    </span>
                     <p
                         class="text-[14px] sm:text-base md:text-lg lg:text-xl font-medium leading-[130%] md:leading-[150%] mt-2">
                         Industries Mastered
@@ -694,10 +694,10 @@
 
                 <!-- Item 4 -->
                 <div class="stat-item text-center py-2">
-                    <h3
-                        class="text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%]">
-                        3x
-                    </h3>
+                    <span
+                        class="text-white text-[30px] md:text-[40px] lg:text-[60px] font-semibold leading-[100%] md:leading-[130%] block">
+                        <span class="counter" data-target="3" data-suffix="x">0</span>
+                    </span>
                     <p
                         class="text-[14px] sm:text-base md:text-lg lg:text-xl font-medium leading-[130%] md:leading-[150%] mt-2">
                         Average Map Pack Lift
@@ -1050,23 +1050,36 @@
             </div>
 
             <!-- 3-Column Image Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-12">
+            <div id="works-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-12">
 
-                <!-- Column 1: HVAC -->
-                <a href="#" class="flex flex-col group">
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <!-- Image Container -->
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
+                        <!-- Image -->
                         <img src="assets/images/recent-result.png" alt="Phoenix HVAC Case Study Presentation"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
+
+                        <!-- Dark Overlay -->
+                        <span
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
 
                         <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
+                            style="box-shadow: 0 4px 8px -2px rgba(0,0,0,.04),0 2px 4px -2px rgba(0,0,0,.08)">
                             HVAC
                         </span>
+
+                        <!-- View Work Cursor -->
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
                     <!-- Title -->
@@ -1080,68 +1093,81 @@
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Phoenix, AZ · USA · GBP + Local SEO + Citations
                     </p>
+
                 </a>
 
-                <!-- Column 2: DENTAL -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
                         <img src="assets/images/recent-result.png"
                             alt="Chicago Dental Group — 4 locations ranked in Map Pack"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
                             Dental
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
                         Chicago Dental Group — 4 locations ranked in Map Pack
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         Chicago, IL · USA · Multi-location Local SEO
                     </p>
+
                 </a>
 
-                <!-- Column 3: PLUMBING -->
-                <a href="#" class="flex flex-col group">
-                    <!-- Image Container -->
+                <!-- Project card -->
+                <a href="#" class="flex flex-col group work-card">
+
                     <div
-                        class="relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-pointer mb-2 sm:mb-5">
+                        class="work-media relative w-full aspect-4/3 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 cursor-none mb-2 sm:mb-5">
 
                         <img src="assets/images/recent-result.png"
                             alt="London Plumbing Pro — emergency searches domination"
-                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" />
+                            class="absolute inset-0 w-full h-full object-contain transition-transform duration-800 ease-out group-hover:scale-[1.06]" />
 
-                        <!-- Badge -->
                         <span
-                            class="absolute top-5 left-5 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm"
-                            style="box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.08)">
+                            class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></span>
+
+                        <span
+                            class="absolute top-5 left-5 z-20 text-[14px] sm:text-base md:text-xl bg-tomato text-white font-semibold leading-[130%] md:leading-[150%] tracking-[1.6px] md:tracking-[2px] px-3 py-0.5 uppercase rounded-sm">
                             Plumbing
                         </span>
+
+                        <span
+                            class="view-work absolute left-0 top-0 z-30 flex items-center justify-center rounded-full bg-tomato text-white font-bold pointer-events-none will-change-transform w-25 h-25 sm:w-30 sm:h-30 lg:w-40 lg:h-40 text-base lg:text-lg">
+                            View Work
+                        </span>
+
                     </div>
 
-                    <!-- Title -->
                     <h3
                         class="text-black text-xl md:text-2xl font-semibold leading-[100%] md:leading-[130%] mb-2 md:mb-4 no-underline group-hover:underline decoration-2 decoration-black underline-offset-4 transition-all duration-500">
                         London Plumbing Pro — emergency searches domination
                     </h3>
 
-                    <!-- Metadata -->
                     <p
                         class="text-black text-[14px] sm:text-base md:text-lg lg:text-xl font-normal leading-[130%] md:leading-[150%]">
                         London, UK · Emergency plumber + local SEO
                     </p>
+
                 </a>
 
             </div>
