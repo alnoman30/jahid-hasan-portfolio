@@ -768,6 +768,7 @@ html.lenis body {
   .header-section.is-sticky .header {
     height: 50px;
   }
+  
 }
 
 @media (max-width: 576px) {
